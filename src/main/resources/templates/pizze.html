@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pizze</title>
+</head>
+<body>
+
+	<h1>Pizze:</h1>
+	<h5 th:if="${pizze.size() < 1}">non ci sono pizze!!!</h5>
+	<ul th:if="${pizze.size() > 0}">
+		<li th:each="pizza : ${pizze}" th:object="${pizza}">
+			
+			[[*{name}]]
+		</li>
+	</ul>
+</body>
+</html>
