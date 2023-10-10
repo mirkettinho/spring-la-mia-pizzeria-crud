@@ -20,7 +20,12 @@
 			<li th:each="pizza : ${pizze}" th:object="${pizza}">
 				
 				<a th:href="@{pizza-details/{id}(id=*{id})}">[[*{name}]]</a>
+				<a th:href="@{/pizza/update/{id}(id=*{id})}" class="btn btn-warning">Modifica</a>
 				
+				<form th:action="@{/pizza/delete/{id}(id=*{id})}" method="POST" style="display: inline;" >		
+					<input type="submit" value="Elimina">
+				</form>
+
 			</li>
 		</ul>
 	</div>

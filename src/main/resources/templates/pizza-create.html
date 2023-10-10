@@ -6,7 +6,11 @@
 </head>
 <body>
 	
-	<h1>Pizza Create</h1>
+	<h1>
+		<span th:if="${pizza.id < 1}">Crea pizza</span>
+		
+		<span th:if="${pizza.id > 0}">Modifica pizza</span>
+	</h1>
 	
 	<form th:object="${pizza}"
 			method="POST">
@@ -23,7 +27,7 @@
 		<label for="price">Price</label>
 		<input type="text" name="price" th:value="*{price}">
 		
-		<input type="submit" value="Crea">
+		<input type="submit" th:value="${pizza.id > 0 ? 'Modifica' : 'Crea'}">
 	</form>
 </body>
 </html>
