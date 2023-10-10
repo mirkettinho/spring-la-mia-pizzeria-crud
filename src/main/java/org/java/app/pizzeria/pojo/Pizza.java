@@ -1,10 +1,14 @@
 package org.java.app.pizzeria.pojo;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @Entity
 public class Pizza {
@@ -12,10 +16,19 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(nullable = false, unique = true)
+	@Length(min = 3, max = 20)
 	private String name;
+	
+	@Length(max = 255)
 	private String description;
+	
+	@Length(max = 255)
 	private String photo;
+	
+	@Min(0)
+	@Max(100)
 	private int price;
 	
 	public Pizza() {}
@@ -72,6 +85,6 @@ public class Pizza {
 	@Override
 	public String toString() {
 		
-		return getId() + getName() + getDescription() + getPhoto() + getPrice();
+		return "[" + getId() + "]" + getName() + " " + getDescription()+ " " + getPhoto() + " " + getPrice();
 	}
 }
